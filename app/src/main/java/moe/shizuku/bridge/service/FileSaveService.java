@@ -56,7 +56,7 @@ public class FileSaveService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        if (intent == null || intent.getAction() == null || !intent.hasExtra(Intent.EXTRA_STREAM)) {
+        if (intent == null || intent.getAction() == null) {
             return;
         }
 
@@ -87,6 +87,10 @@ public class FileSaveService extends IntentService {
     }
 
     private void handleSaveFile(Intent intent) {
+        if (!intent.hasExtra(Intent.EXTRA_STREAM)) {
+            return;
+        }
+
         boolean share = intent.getBooleanExtra(EXTRA_SHARE, false);
 
         if (!checkPermission(share)) {

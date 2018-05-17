@@ -56,11 +56,16 @@ public class MainActivity extends Activity {
         mSwitchForwardToCache = findViewById(R.id.switch_save_to_public);
         mSwitchForwardToCache.setChecked(Settings.getBoolean("cache_to_public", false));
         mSwitchForwardToCache.setOnClickListener(v -> {
-            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSION_CACHE_TO_PUBLIC);
-                return;
+            boolean newValue = !Settings.getBoolean("cache_to_public", false);
+            if (newValue) {
+                if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSION_CACHE_TO_PUBLIC);
+                    return;
+                }
+            } else {
+                FileSaveService.startClearCache(this);
             }
-            Settings.putBoolean("cache_to_public", !Settings.getBoolean("cache_to_public", false));
+            Settings.putBoolean("cache_to_public", newValue);
         });
 
         findViewById(R.id.select_forward_apps).setOnClickListener(v -> ChooserActivity.start(v.getContext()));
@@ -91,12 +96,8 @@ public class MainActivity extends Activity {
             case REQUEST_PERMISSION_CACHE_TO_PUBLIC:
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Settings.getBoolean("cache_to_public", true);
-                    mSwitchForwardToCache.setChecked(true);
                 } else {
-                    Settings.getBoolean("cache_to_public", false);
                     mSwitchForwardToCache.setChecked(false);
-
-                    FileSaveService.startClearCache(this);
                 }
                 break;
             default:
