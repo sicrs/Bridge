@@ -64,7 +64,7 @@ public class ChooserActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chooser_grid);
 
-        ResolverDrawerLayout rdl = (ResolverDrawerLayout) findViewById(R.id.contentPanel);
+        ResolverDrawerLayout rdl = findViewById(R.id.contentPanel);
         rdl.setOnDismissedListener(new ResolverDrawerLayout.OnDismissedListener() {
             @Override
             public void onDismissed() {
@@ -75,17 +75,17 @@ public class ChooserActivity extends Activity {
         boolean editMode = !getIntent().hasExtra(Intent.EXTRA_STREAM);
         ArrayList<ResolveInfo> resolveInfo = getIntent().getParcelableArrayListExtra(EXTRA_RESOLVE_INFO);
 
-        TextView title = (TextView) findViewById(android.R.id.title);
+        TextView title = findViewById(android.R.id.title);
         title.setText(editMode ? R.string.select_forward_apps_title : R.string.forward_title);
 
-        TextView empty = (TextView) findViewById(android.R.id.empty);
+        TextView empty = findViewById(android.R.id.empty);
         empty.setVisibility(resolveInfo.isEmpty() ? View.VISIBLE : View.GONE);
 
         if (!editMode) {
             empty.setText(R.string.select_first);
         }
 
-        TextView profile_button = (TextView) findViewById(R.id.profile_button);
+        TextView profile_button = findViewById(R.id.profile_button);
         if (editMode) {
             profile_button.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -135,7 +135,7 @@ public class ChooserActivity extends Activity {
             }
         }
 
-        RecyclerView list = (RecyclerView) findViewById(R.id.resolver_list);
+        RecyclerView list = findViewById(R.id.resolver_list);
         list.setLayoutManager(new GridLayoutManager(this, 4));
         list.setAdapter(new ChooserAdapter(resolveInfo, editMode));
     }

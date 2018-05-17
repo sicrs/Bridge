@@ -58,7 +58,7 @@ public class SaveActivity extends Activity {
 
     private boolean checkCrossUser() {
         Uri uri;
-        if (getIntent().getAction().equals(Intent.ACTION_SEND)) {
+        if (Intent.ACTION_SEND.equals(getIntent().getAction())) {
             uri = getIntent().getParcelableExtra(Intent.EXTRA_STREAM);
         } else {
             ArrayList<Uri> uris = getIntent().getParcelableArrayListExtra(Intent.EXTRA_STREAM);

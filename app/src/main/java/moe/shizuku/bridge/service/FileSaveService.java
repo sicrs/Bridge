@@ -27,6 +27,7 @@ import moe.shizuku.bridge.R;
 import moe.shizuku.bridge.utils.FileUtils;
 import moe.shizuku.bridge.utils.FilenameResolver;
 import moe.shizuku.bridge.utils.ResolveInfoHelper;
+import moe.shizuku.support.utils.Settings;
 
 public class FileSaveService extends IntentService {
 
@@ -55,7 +56,7 @@ public class FileSaveService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        if (intent == null || !intent.hasExtra(Intent.EXTRA_STREAM)) {
+        if (intent == null || intent.getAction() == null || !intent.hasExtra(Intent.EXTRA_STREAM)) {
             return;
         }
 
@@ -96,9 +97,9 @@ public class FileSaveService extends IntentService {
         }
 
         ArrayList<Uri> uris;
-        if (intent.getAction().equals(Intent.ACTION_SEND)) {
+        if (Intent.ACTION_SEND.equals(intent.getAction())) {
             uris = new ArrayList<>();
-            uris.add(intent.<Uri>getParcelableExtra(Intent.EXTRA_STREAM));
+            uris.add(intent.getParcelableExtra(Intent.EXTRA_STREAM));
         } else {
             uris = intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
         }
@@ -166,7 +167,24 @@ public class FileSaveService extends IntentService {
     private File getFile(Uri uri, boolean share) {
         String filename = FilenameResolver.query(getContentResolver(), uri, Long.toString(System.currentTimeMillis()));
         if (share) {
-            return FileUtils.getCacheFile(this, "files/" + filename);
+            if (!Settings.getBoolean("cache_to_public", false)) {
+                return FileUtils.getCacheFile(this, "files/" + filename);
+            } else {
+                File file = FileUtils.getExternalStoragePublicFile(Environment.DIRECTORY_DOWNLOADS, "Bridge/tmp", ".nomedia");
+                if (!file.exists()) {
+                    if (!file.getParentFile().exists()) {
+                        //noinspection ResultOfMethodCallIgnored
+                        file.getParentFile().mkdirs();
+                    }
+                    try {
+                        //noinspection ResultOfMethodCallIgnored
+                        file.createNewFile();
+                    } catch (IOException ignored) {
+                    }
+                }
+
+                return FileUtils.getExternalStoragePublicFile(Environment.DIRECTORY_DOWNLOADS, "Bridge/tmp", filename);
+            }
         } else {
             // too bad
             if (ContentResolver.SCHEME_FILE.equals(uri.getScheme()) && uri.getPath().contains("ScreenshotProvider")) {
@@ -217,11 +235,6 @@ public class FileSaveService extends IntentService {
     }
 
     private void toast(final String message) {
-        new Handler(getMainLooper()).post(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-            }
-        });
+        new Handler(getMainLooper()).post(() -> Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show());
     }
 }

@@ -86,7 +86,7 @@
 
                 </LinearLayout>
 
-                <moe.shizuku.bridge.widget.HtmlTextView
+                <moe.shizuku.support.widget.HtmlTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="?android:textColorSecondaryInverse"
@@ -100,12 +100,14 @@
                     android:id="@+id/view_saved_files"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="-12dp"
+                    android:layout_marginBottom="-12dp"
+                    android:layout_marginTop="-4dp"
                     style="@android:style/Widget.Material.Button.Borderless"
                     android:textColor="?android:textColorPrimaryInverse"
                     android:text="@string/view_saved_files"
                     android:visibility="gone"
-                    tools:visibility="visible"/>
-
+                tools:visibility="visible"/>
 
             </LinearLayout>
 
@@ -119,6 +121,8 @@
             android:focusable="true"
             android:stateListAnimator="@animator/raise"
             android:theme="@style/AppTheme.SaveCard"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             app:cardBackgroundColor="?android:colorPrimaryDark"
             app:contentPadding="16dp"
             app:cardCornerRadius="2dp"
@@ -155,7 +159,7 @@
 
                 </LinearLayout>
 
-                <moe.shizuku.bridge.widget.HtmlTextView
+                <moe.shizuku.support.widget.HtmlTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="?android:textColorSecondaryInverse"
@@ -169,9 +173,46 @@
                     android:id="@+id/select_forward_apps"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="-12dp"
+                    android:layout_marginBottom="-12dp"
+                    android:layout_marginTop="-4dp"
                     style="@android:style/Widget.Material.Button.Borderless"
                     android:textColor="?android:textColorPrimaryInverse"
                     android:text="@string/select_forward_apps"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="16dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:textColor="?android:textColorPrimaryInverse"
+                        android:textAllCaps="true"
+                        android:fontFamily="sans-serif-medium"
+                        android:textSize="14sp"
+                        android:text="@string/save_to_public"/>
+
+                    <Switch
+                        android:id="@+id/switch_save_to_public"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <moe.shizuku.support.widget.HtmlTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="?android:textColorSecondaryInverse"
+                    android:textSize="14sp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:lineSpacingExtra="2dp"
+                    app:textHtml="@string/save_to_public_summary"/>
 
             </LinearLayout>
 
@@ -198,7 +239,7 @@
                 android:fontFamily="sans-serif-medium"
                 android:text="@string/help"/>
 
-            <moe.shizuku.bridge.widget.HtmlTextView
+            <moe.shizuku.support.widget.HtmlTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lineSpacingExtra="2dp"

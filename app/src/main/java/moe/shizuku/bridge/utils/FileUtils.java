@@ -33,6 +33,7 @@ public class FileUtils {
         }
 
         delete(context.getCacheDir());
+        delete(FileUtils.getExternalStoragePublicFile(Environment.DIRECTORY_DOWNLOADS, "Bridge", "tmp"));
     }
 
     @SuppressWarnings("ResultOfMethodCallIgnored")

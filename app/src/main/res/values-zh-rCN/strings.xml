@@ -9,28 +9,21 @@
     </plurals>
     <string name="forward_title">转发…</string>
     <string name="select_forward_apps_title">点按切换是否显示…</string>
-
     <string name="fail_no_write_storage_permission">Bridge 没有读写存储空间权限，请在设置中授予。</string>
-
     <string name="desc">一座连接分享到内置存储，工作用户或是其他应用的桥梁。</string>
-
     <string name="save_name">保存到内置存储</string>
-    <string name="save_desc"><![CDATA[保存分享的文件到 <font face="monospace">/Download/Bridge/</font>。<br>对于屏幕截图，它们将会被保存至 <font face="monospace">/Pictures/Screenshots/</font>。]]></string>
+    <string name="save_desc"><![CDATA[保存分享的文件到 <font face="monospace">/Download/Bridge</font>。<br>对于屏幕截图，它们将会被保存至 <font face="monospace">/Pictures/Screenshots</font>。]]></string>
     <string name="view_saved_files">查看保存的文件</string>
-
     <string name="forward_name">转发</string>
     <string name="forward_desc"><![CDATA[由于部分应用不能正确接收分享内容，您可以先分享至 Bridge，Bridge 将会转发分享的内容到那些应用。<br>您需要在先选择什么应用会显示在转发中。]]></string>
     <string name="select_forward_apps">选择可以转发的应用</string>
-
     <string name="noApplications">没有应用可执行此操作。</string>
-
     <string name="select_first">您需要在 Bridge 中先选择什么应用会显示在转发中。</string>
-
     <string name="help">帮助</string>
     <string name="help_detail"><![CDATA[您似乎开启了工作资料，若要在主用户和工作资料之间使用传递文件，您首先需要<b>在对应用户中</b>安装 Bridge 并启用对应功能。<br><br>通常对于一般应用，只需要需选择来自 Android 系统的“切换至工作（个人）”即可，对于部分<b>设计不佳的应用</b>，需要先选择<b>“转发”</b>再选择来自 <b>Bridge</b> 的<b>“切换至工作（个人）”</b>，再进行其他操作（分享或保存）。<br><br><i>“设计不佳的应用”指：<br>应用无法正确处理分享的 <font face="monospace">content uri</font>，表现为提示找不到文件或直接关闭。<br>应用会分享 <font face="monospace">file uri</font>（文件位置）给其他应用，其他应用可能没有权限打开对应文件。<i>]]></string>
-
     <string name="file_uri_cross_user">正在从设计不佳的应用分享，您需要先分享至来自 Bridge 的“转发”。</string>
-
     <string name="no_extra">这个应用没有发送文件。</string>
+    <string name="save_to_public">缓存到公共文件夹</string>
+    <string name="save_to_public_summary"><![CDATA[缓存转发放的文件到 <font face="monospace">/Download/Bridge/tmp</font> 而不是 <font face="monospace">Android/data/moe.shizuku.bridge</font> 来解决接收对象无法访问可能后者中的文件的问题。]]></string>
 
 </resources>

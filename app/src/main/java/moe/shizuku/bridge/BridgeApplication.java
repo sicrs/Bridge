@@ -3,7 +3,7 @@ package moe.shizuku.bridge;
 import android.app.Application;
 import android.os.StrictMode;
 
-import moe.shizuku.bridge.utils.Settings;
+import moe.shizuku.support.utils.Settings;
 
 /**
  * Created by Rikka on 2017/3/26.

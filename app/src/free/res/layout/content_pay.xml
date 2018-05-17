@@ -34,7 +34,7 @@
             android:orientation="vertical">
 
 
-            <moe.shizuku.bridge.widget.HtmlTextView
+            <moe.shizuku.support.widget.HtmlTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="?android:textColorSecondaryInverse"
@@ -48,6 +48,8 @@
                 android:id="@android:id/button1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="-12dp"
+                android:layout_marginBottom="-12dp"
                 style="@android:style/Widget.Material.Button.Borderless"
                 android:textColor="?android:textColorPrimaryInverse"
                 android:text="@string/paid_version_from_google_play"/>
@@ -56,6 +58,8 @@
                 android:id="@android:id/button2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="-12dp"
+                android:layout_marginBottom="-12dp"
                 style="@android:style/Widget.Material.Button.Borderless"
                 android:textColor="?android:textColorPrimaryInverse"
                 android:text="@string/alipay"

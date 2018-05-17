@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name" translatable="false">Bridge</string>
-
     <string name="action_save">Save to internal storage</string>
     <string name="action_forwarding">Forwarding</string>
     <string name="save_failed" formatted="false">Save failed.\n%s</string>
@@ -11,28 +10,21 @@
     </plurals>
     <string name="forward_title">Forward…</string>
     <string name="select_forward_apps_title">Tap to toggle whether to show…</string>
-
     <string name="fail_no_write_storage_permission">Bridge have no read / write storage permission, please grant it in settings.</string>
-
     <string name="desc">A bridge that connects share to internal storage, work user or other apps.</string>
-
     <string name="save_name">Save to internal storage</string>
-    <string name="save_desc"><![CDATA[Save file to <font face="monospace">/Download/Bridge/</font>.<br>To screenshots, they will be saved to <font face="monospace">/Pictures/Screenshots/</font> instead.]]></string>
+    <string name="save_desc"><![CDATA[Save file to <font face="monospace">Download/Bridge</font>.<br>To screenshots, they will be saved to <font face="monospace">Pictures/Screenshots</font> instead.]]></string>
     <string name="view_saved_files">View saved files</string>
-
     <string name="forward_name">Forwarding</string>
     <string name="forward_desc"><![CDATA[Some app can\'t receive shared item properly, you can share to Bridge first and Bridge will forward shared item to those app.<br>You should select which app will show in forwarding first.]]></string>
     <string name="select_forward_apps">Select forward apps</string>
-
     <string name="noApplications">No apps can perform this action.</string>
-
     <string name="select_first">You should select which app will show in forwarding first in Bridge.</string>
-
     <string name="help">Help</string>
     <string name="help_detail"><![CDATA[It seems that you have enabled work profile, to transfer file cross main user and work profile, you should install Bridge and enable functions <b>in that user</b> first.<br><br>Usually to most apps, you just need to tap \"Switch to work (personal)\" from Android system. But to some <b>poor-designed</b> apps, you should tap <b>\"Forwarding\"</b> and tap <b>\"Switch to work (personal)\"</b> from <b>Bridge</b> first, then you can do the thing you want (share or save).<br><br><i>\"Poor-designed apps\" above means:<br>The app can\'t handle <font face="monospace">content uri</font>, acts like the app shows \"file not found\" or just closed.<br>The app will share <font face="monospace">file uri</font> (file path) to other apps, other apps may not have permission to read the file.<i>]]></string>
-
     <string name="file_uri_cross_user">Sharing from poor-designed app, you should share to \"Forwarding\" from Bridge first.</string>
-
     <string name="no_extra">This app did not send file.</string>
+    <string name="save_to_public">Cache to public folder</string>
+    <string name="save_to_public_summary"><![CDATA[Cache forwarding file to <font face="monospace">Download/Bridge</font> instead of <font face="monospace">Android/data/moe.shizuku.bridge</font> to solve the problem that the receiving app may not able to access the file in the latter.]]></string>
 
 </resources>

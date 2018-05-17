@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="HtmlTextView">
-        <attr name="textHtml" format="reference"/>
-    </declare-styleable>
-
     <declare-styleable name="ResolverDrawerLayout">
         <attr name="android:maxWidth" />
         <attr name="maxCollapsedHeight" format="dimension" />

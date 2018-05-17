@@ -1,5 +1,6 @@
 package moe.shizuku.bridge.utils;
 
+import android.content.Context;
 import android.os.UserManager;
 
 /**
@@ -8,7 +9,8 @@ import android.os.UserManager;
 
 public class UserManagerUtils {
 
-    public static boolean isUsingWorkProfile(UserManager userManager) {
-        return userManager.getUserProfiles().size() > 1;
+    public static boolean isUsingWorkProfile(Context context) {
+        UserManager um = context.getSystemService(UserManager.class);
+        return um != null && um.getUserProfiles().size() > 1;
     }
 }

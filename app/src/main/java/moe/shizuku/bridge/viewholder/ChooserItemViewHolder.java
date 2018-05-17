@@ -1,5 +1,6 @@
 package moe.shizuku.bridge.viewholder;
 
+import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -7,7 +8,9 @@ import android.content.pm.ResolveInfo;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,13 +21,24 @@ import moe.shizuku.bridge.BridgeSettings;
 import moe.shizuku.bridge.ChooserActivity;
 import moe.shizuku.bridge.R;
 import moe.shizuku.bridge.utils.IntentUtils;
-import moe.shizuku.utils.recyclerview.BaseViewHolder;
+import moe.shizuku.support.recyclerview.BaseViewHolder;
+import moe.shizuku.support.utils.ContextUtils;
 
 /**
  * Created by Rikka on 2017/4/6.
  */
 
 public class ChooserItemViewHolder extends BaseViewHolder<ResolveInfo> {
+
+    public static Creator<ResolveInfo> newCreator(final boolean editMode) {
+
+        return new Creator<ResolveInfo>() {
+            @Override
+            public BaseViewHolder<ResolveInfo> createViewHolder(LayoutInflater inflater, ViewGroup parent) {
+                return new ChooserItemViewHolder(inflater.inflate(R.layout.resolve_grid_item, parent, false), editMode);
+            }
+        };
+    }
 
     private static final Object CHECK_SELECT_PAYLOAD = new Object();
 
@@ -39,9 +53,9 @@ public class ChooserItemViewHolder extends BaseViewHolder<ResolveInfo> {
 
         mEditMode = editMode;
 
-        icon = (ImageView) itemView.findViewById(android.R.id.icon);
-        target_badge = (ImageView) itemView.findViewById(R.id.target_badge);
-        title = (TextView) itemView.findViewById(android.R.id.text1);
+        icon = itemView.findViewById(android.R.id.icon);
+        target_badge = itemView.findViewById(R.id.target_badge);
+        title = itemView.findViewById(android.R.id.text1);
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,12 +65,17 @@ public class ChooserItemViewHolder extends BaseViewHolder<ResolveInfo> {
 
                     getAdapter().notifyItemChanged(getAdapterPosition(), CHECK_SELECT_PAYLOAD);
                 } else {
-                    Intent intent = new Intent(getActivity().getIntent());
+                    Activity activity = ContextUtils.getActivity(v.getContext());
+                    if (activity == null) {
+                        return;
+                    }
+
+                    Intent intent = new Intent(activity.getIntent());
                     intent.setComponent(ComponentName.createRelative(getData().activityInfo.packageName, getData().activityInfo.name));
                     intent.removeExtra(ChooserActivity.EXTRA_RESOLVE_INFO);
                     IntentUtils.startOtherActivity(v.getContext(), intent);
 
-                    getActivity().finish();
+                    activity.finish();
                 }
             }
         });

@@ -3,7 +3,7 @@ package moe.shizuku.bridge;
 import java.util.HashSet;
 import java.util.Set;
 
-import moe.shizuku.bridge.utils.Settings;
+import moe.shizuku.support.utils.Settings;
 
 /**
  * Created by Rikka on 2017/4/6.
@@ -17,7 +17,7 @@ public class BridgeSettings {
 
     public static Set<String> getForwardActivities() {
         if (sForwardActivities == null) {
-            sForwardActivities = Settings.getStringSet(FORWARD_ACTIVITIES, new HashSet<String>());
+            sForwardActivities = Settings.getStringSet(FORWARD_ACTIVITIES, new HashSet<>());
         }
         return sForwardActivities;
     }
