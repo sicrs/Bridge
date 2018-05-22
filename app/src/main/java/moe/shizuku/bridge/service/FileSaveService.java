@@ -191,7 +191,7 @@ public class FileSaveService extends IntentService {
             }
         } else {
             // too bad
-            if (ContentResolver.SCHEME_FILE.equals(uri.getScheme()) && uri.getPath().contains("ScreenshotProvider")) {
+            if (ContentResolver.SCHEME_CONTENT.equals(uri.getScheme()) && uri.getPath().contains("ScreenshotProvider")) {
                 return FileUtils.getExternalStoragePublicFile(Environment.DIRECTORY_PICTURES, "Screenshots", filename);
             } else {
                 return FileUtils.getExternalStoragePublicFile(Environment.DIRECTORY_DOWNLOADS, "Bridge", filename);
