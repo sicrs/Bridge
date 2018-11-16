@@ -17,9 +17,9 @@
     </style>
 
     <style name="AppTheme.SaveCard">
-        <item name="android:colorPrimary">#9C27B0</item>
-        <item name="android:colorPrimaryDark">#7B1FA2</item>
-        <item name="android:colorAccent">#FFD740</item>
+        <item name="android:colorPrimary">#231E33</item>
+        <item name="android:colorPrimaryDark">#1E1A2B</item>
+        <item name="android:colorAccent">#FA9B9F</item>
     </style>
 
     <!-- Theme used for the intent picker activity. -->
