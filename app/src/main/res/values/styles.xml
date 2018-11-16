@@ -39,7 +39,5 @@
         <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>-->
         <item name="android:colorAccent">@color/colorAccent</item>
     </style>
-    <style name="AppTheme.CustomFont">
-        <item name="android:fontFamily">@font/gsans</item>
-    </style>
+
 </resources>
