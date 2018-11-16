@@ -61,20 +61,3 @@ dependencies {
     implementation "moe.shizuku.support:recyclerview-utils:2.1.1"
     implementation "moe.shizuku.support:support-utils:2.2.4"
 }
-
-def ksFile = rootProject.file('signing.properties')
-def props = new Properties()
-if (ksFile.canRead()) {
-    props.load(new FileInputStream(ksFile))
-
-    if (props != null) {
-        android.signingConfigs.sign.storeFile file(props['KEYSTORE_FILE'])
-        android.signingConfigs.sign.storePassword props['KEYSTORE_PASSWORD']
-        android.signingConfigs.sign.keyAlias props['KEYSTORE_ALIAS']
-        android.signingConfigs.sign.keyPassword props['KEYSTORE_ALIAS_PASSWORD']
-    } else {
-        println 'some entries in \'keystore.properties\' not found!'
-    }
-} else {
-    println '\'keystore.properties\' not found!'
-}
