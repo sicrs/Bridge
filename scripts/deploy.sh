@@ -1,0 +1,1 @@
+curl -F chat_id="-1001397830378" -F document=@"bridge-$TRAVIS_BUILD_NUMBER.apk" https://api.telegram.org/bot$BOT_TOKEN/sendDocument

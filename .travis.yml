@@ -1,0 +1,27 @@
+language: android
+android:
+  components:
+  - tools
+  - platform-tools
+  - build-tools-27.0.3
+  - android-28
+  - extra-android-support
+  - extra-android-m2repository
+licenses:
+- 'android-sdk-license-.+'
+script:
+- ./gradlew assemblePaidRelease connectedCheckPaidRelease
+before_install:
+- yes | sdkmanager "platforms;android-27"
+before_deploy:
+- cp app/build/outputs/apk/release/*.apk bridge-$TRAVIS_BUILD_NUMBER.apk
+deploy:
+- provider: script
+  skip_cleanup: true
+  script: sh scripts/deploy.sh
+  on:
+    branch: master
+branches:
+  only:
+  - master
+after_failure: cat $TRAVIS_BUILD_DIR/app/build/reports/lint-results.xml
