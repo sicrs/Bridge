@@ -16,7 +16,7 @@ before_install:
 - chmod +x gradlew
 before_deploy:
 - ls app/build/outputs/apk/paid
-- cp app/build/outputs/apk/paid/*.apk bridge-$TRAVIS_BUILD_NUMBER.apk
+- cp app/build/outputs/apk/paid/release/*.apk bridge-$TRAVIS_BUILD_NUMBER.apk
 deploy:
 - provider: script
   skip_cleanup: true
