@@ -43,6 +43,10 @@ android {
             dimension "tier"
         }
     }
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+    }
 }
 
 dependencies {
