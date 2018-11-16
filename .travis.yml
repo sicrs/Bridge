@@ -15,6 +15,7 @@ before_install:
 - yes | sdkmanager "platforms;android-27"
 - chmod +x gradlew
 before_deploy:
+- ls app/build/outputs/apk
 - cp app/build/outputs/apk/paid/*.apk bridge-$TRAVIS_BUILD_NUMBER.apk
 deploy:
 - provider: script
